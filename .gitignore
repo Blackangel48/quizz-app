@@ -1,0 +1,36 @@
+# --- Général ---
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Node / Backend & Frontend ---
+node_modules/
+dist/
+build/
+.npm
+package-lock.json
+yarn.lock
+
+# --- Docker ---
+.dockerignore
+# Si tu décides de stocker tes données MongoDB localement au lieu d'un volume nommé :
+/data/db
+
+# --- Vite / React ---
+.vite/
+*.local
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Stockage temporaire / Uploads ---
+backend/uploads/*
+!backend/uploads/.gitkeep
