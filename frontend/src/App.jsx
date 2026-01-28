@@ -42,7 +42,9 @@ function App() {
 
       <div className="question-card">
         {question.imageUrl && (
-          <img src={question.imageUrl} alt="Question" className="question-image" />
+          <a class="tile" href="#" tabIndex="0">
+            <img src={question.imageUrl} alt="Question" className="question-image" />
+          </a>
         )}
         
         <h2>{question.text}</h2>
@@ -66,7 +68,7 @@ function App() {
 
         {selectedAnswer && (
           <div className="feedback">
-            <p>{isCorrect ? "✅ Excellent !" : `❌ Dommage ! La réponse était : ${question.correctAnswer}`}</p>
+            <p>{isCorrect ? "Excellent !" : `Dommage ! La réponse était : ${question.correctAnswer}`}</p>
             <button onClick={fetchRandomQuestion} className="next-btn">Question Suivante</button>
           </div>
         )}
