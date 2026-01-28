@@ -48,5 +48,15 @@ app.get('/api/questions/:id', async (req, res) => {
   }
 });
 
+// Route de récupération de la liste des questions
+app.get('/api/questions', async (req, res) => {
+  try {
+    const questions = await Question.find();
+    res.json(questions);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
 
 app.listen(5000, () => console.log('Backend démarré sur le port 5000'));
