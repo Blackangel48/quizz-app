@@ -7,6 +7,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [userAnswers, setUserAnswers] = useState([]);
 
   // On charge toutes les questions
   const fetchAllQuestions = async () => {
@@ -26,6 +27,8 @@ function App() {
   const handleAnswer = (option) => {
     if (selectedAnswer) return; // Empêche de répondre plusieurs fois
     setSelectedAnswer(option);
+
+    setUserAnswers([...userAnswers, option]);
     
     if (option === questions[currentIndex].correctAnswer) {
       setScore(score + 1);
@@ -41,20 +44,47 @@ function App() {
     }
   };
 
-  const isCorrect = ( selectedAnswer === questions[currentIndex]?.correctAnswer );
-
-  const progressPercentage = (currentIndex / questions.length) * 100;
+  const currentQuestion = questions[currentIndex];
+  const totalQuestions = questions.length;
+  const isCorrect = ( selectedAnswer === currentQuestion?.correctAnswer );
 
 //  if (loading) return <div className="loader">Chargement du quiz...</div>;
 //  if (!question) return <div>Aucune question trouvée. Lancez le script seed !</div>;
-  if (questions.length === 0) return <div className="loader">Chargement du quiz...</div>;
+  if (totalQuestions === 0) return <div className="loader">Chargement du quiz...</div>;
 
   if (showResults === true) {
     return (
       <div className='quiz-result'>
         <h1>Votre score</h1>
 
-        <h2>{score} / {questions.length}</h2>
+        <h2>{score} / {totalQuestions}</h2>
+
+        <div className='quiz-recap'>
+          {questions.map((questionData, index) => {
+            const userChoice = userAnswers[index];
+            const isUserCorrect = userChoice === questionData.correctAnswer;
+
+            return (
+              <div key={index} className={`question-recap ${isUserCorrect ? 'recap-correct' : 'recap-wrong'}`}>
+                <div className="recap-header">
+                  <img src={questionData.imageUrl} alt="Question" className="recap-image" />
+                  <p><strong>Question {index + 1}:</strong> {questionData.text}</p>
+                </div>
+              
+                <div className='recap-details'>
+                  <p className={isUserCorrect ? 'text-success' : 'text-danger'}>
+                    Votre réponse : {userChoice}
+                  </p>
+                  {!isUserCorrect && (
+                    <p className='text-actual'>
+                      La bonne réponse était : <strong>{questionData.correctAnswer}</strong>
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     )
   }
@@ -67,26 +97,26 @@ function App() {
 
           <div className="progress-container">
             <div className="progress-text">
-              {score} / {questions.length}
+              {score} / {totalQuestions}
             </div>
             <div className="progress-bar-bg">
               <div 
                 className="progress-bar-fill" 
-                style={{ width: `${(currentIndex / questions.length) * 100}%` }}
+                style={{ width: `${(currentIndex / totalQuestions) * 100}%` }}
               ></div>
             </div>
           </div>
 
-          {questions[currentIndex].imageUrl && (
+          {currentQuestion.imageUrl && (
             <a class="tile" href="#" tabIndex="0">
-              <img src={questions[currentIndex].imageUrl} alt="Question" className="question-image" />
+              <img src={currentQuestion.imageUrl} alt="Question" className="question-image" />
             </a>
           )}
           
-          <h2>{questions[currentIndex].text}</h2>
+          <h2>{currentQuestion.text}</h2>
 
           <div className="options-grid">
-            {questions[currentIndex].options.map((option, index) => (
+            {currentQuestion.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(option)}
@@ -104,7 +134,7 @@ function App() {
 
           {selectedAnswer && (
             <div className="feedback">
-              <p>{isCorrect ? "Excellent !" : `Dommage ! La réponse était : ${questions[currentIndex].correctAnswer}`}</p>
+              <p>{isCorrect ? "Excellent !" : `Dommage ! La réponse était : ${currentQuestion.correctAnswer}`}</p>
               <button onClick={nextQuestion} className="next-btn">Question Suivante</button>
             </div>
           )}

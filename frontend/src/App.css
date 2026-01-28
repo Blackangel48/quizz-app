@@ -75,7 +75,6 @@
     align-items: center;
 }
 
-/* Conteneur global de la barre */
 .progress-container {
   margin-bottom: 20px;
   width: 100%;
@@ -88,19 +87,42 @@
   font-weight: bold;
 }
 
-/* Le fond gris */
 .progress-bar-bg {
   width: 100%;
   height: 12px;
-  background-color: #e0e0e0; /* Gris clair */
+  background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden; /* Pour que la barre verte ne dépasse pas des arrondis */
 }
 
-/* La barre verte animée */
 .progress-bar-fill {
   height: 100%;
-  background-color: #90ee90; /* Vert clair (LightGreen) */
+  background-color: #90ee90;
   transition: width 0.4s ease-out; /* Animation fluide lors du changement de question */
   border-radius: 10px 0 0 10px;
 }
+
+.quiz-recap {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.question-recap {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-left: 5px solid #ccc;
+  background: #fff;
+}
+
+.recap-correct { border-left-color: #4caf50; background: #f1f8e9; }
+.recap-wrong { border-left-color: #f44336; background: #ffebee; }
+
+.recap-header { display: flex; align-items: center; gap: 15px; }
+.recap-image { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+
+.text-success { color: #2e7d32; font-weight: bold; }
+.text-danger { color: #c62828; font-weight: bold; }
+.text-actual { color: #555; font-size: 0.9rem; }
