@@ -10,15 +10,23 @@ services:
     build: ./backend
     ports:
       - "5000:5000"
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
       - MONGO_URL=mongodb://db:27017/quizdb
     depends_on:
       - db
+    command: npx nodemon server.js
 
   frontend:
     build: ./frontend
     ports:
       - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev -- --host
     stdin_open: true
     tty: true
 

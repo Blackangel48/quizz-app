@@ -41,6 +41,8 @@ function App() {
     }
   };
 
+  const isCorrect = ( selectedAnswer === questions[currentIndex]?.correctAnswer );
+
 //  if (loading) return <div className="loader">Chargement du quiz...</div>;
 //  if (!question) return <div>Aucune question trouvée. Lancez le script seed !</div>;
   if (questions.length === 0) return <div className="loader">Chargement du quiz...</div>;
@@ -78,7 +80,7 @@ function App() {
                 onClick={() => handleAnswer(option)}
                 className={`option-btn ${
                   selectedAnswer === option 
-                    ? (handleAnswer ? 'correct' : 'wrong') 
+                    ? (isCorrect ? 'correct' : 'wrong') 
                     : ''
                 }`}
                 disabled={selectedAnswer !== null}
@@ -90,7 +92,7 @@ function App() {
 
           {selectedAnswer && (
             <div className="feedback">
-              <p>{handleAnswer ? "Excellent !" : `Dommage ! La réponse était : ${questions[currentIndex].correctAnswer}`}</p>
+              <p>{isCorrect ? "Excellent !" : `Dommage ! La réponse était : ${questions[currentIndex].correctAnswer}`}</p>
               <button onClick={nextQuestion} className="next-btn">Question Suivante</button>
             </div>
           )}
