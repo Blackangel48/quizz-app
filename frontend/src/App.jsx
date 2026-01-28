@@ -27,7 +27,7 @@ function App() {
     if (selectedAnswer) return; // Empêche de répondre plusieurs fois
     setSelectedAnswer(option);
     
-    if (option === question[currentIndex].correctAnswer) {
+    if (option === questions[currentIndex].correctAnswer) {
       setScore(score + 1);
     }
   };
@@ -60,6 +60,9 @@ function App() {
         <h1>Quiz Master</h1>
 
         <div className="question-card">
+
+          <h3 className='index-counter'>{currentIndex + 1}/{questions.length}</h3>
+
           {questions[currentIndex].imageUrl && (
             <a class="tile" href="#" tabIndex="0">
               <img src={questions[currentIndex].imageUrl} alt="Question" className="question-image" />
