@@ -43,6 +43,8 @@ function App() {
 
   const isCorrect = ( selectedAnswer === questions[currentIndex]?.correctAnswer );
 
+  const progressPercentage = (currentIndex / questions.length) * 100;
+
 //  if (loading) return <div className="loader">Chargement du quiz...</div>;
 //  if (!question) return <div>Aucune question trouvée. Lancez le script seed !</div>;
   if (questions.length === 0) return <div className="loader">Chargement du quiz...</div>;
@@ -52,7 +54,7 @@ function App() {
       <div className='quiz-result'>
         <h1>Votre score</h1>
 
-        <h2>{score}/{questions.length}</h2>
+        <h2>{score} / {questions.length}</h2>
       </div>
     )
   }
@@ -63,7 +65,17 @@ function App() {
 
         <div className="question-card">
 
-          <h3 className='index-counter'>{currentIndex + 1}/{questions.length}</h3>
+          <div className="progress-container">
+            <div className="progress-text">
+              {score} / {questions.length}
+            </div>
+            <div className="progress-bar-bg">
+              <div 
+                className="progress-bar-fill" 
+                style={{ width: `${(currentIndex / questions.length) * 100}%` }}
+              ></div>
+            </div>
+          </div>
 
           {questions[currentIndex].imageUrl && (
             <a class="tile" href="#" tabIndex="0">
