@@ -69,3 +69,6 @@
     cursor: pointer; 
 }
 
+.quiz-result {
+    padding-left: 10px;
+}
