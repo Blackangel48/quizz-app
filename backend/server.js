@@ -30,4 +30,23 @@ app.get('/api/questions/random', async (req, res) => {
   }
 });
 
+
+// Route pour récupérer la question demandée
+app.get('/api/questions/:id', async (req, res) => {
+  try {
+    const questionId = req.params.id;
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      return res.status(404).json({error : "Question non trouvée"});
+    }
+
+    res.json(question);
+  } catch (err) {
+    // Si l'ID envoyé n'est pas au format MongoDB (CastError)
+    res.status(400).json({ error: "ID invalide ou erreur serveur" });
+  }
+});
+
+
 app.listen(5000, () => console.log('Backend démarré sur le port 5000'));
