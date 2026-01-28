@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   const [questions, setQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const [score, setScore] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -54,46 +54,47 @@ function App() {
       </div>
     )
   }
+  else {
+    return (
+      <div className="quiz-container">
+        <h1>Quiz Master</h1>
 
-  return (
-    <div className="quiz-container">
-      <h1>Quiz Master</h1>
+        <div className="question-card">
+          {questions[currentIndex].imageUrl && (
+            <a class="tile" href="#" tabIndex="0">
+              <img src={questions[currentIndex].imageUrl} alt="Question" className="question-image" />
+            </a>
+          )}
+          
+          <h2>{questions[currentIndex].text}</h2>
 
-      <div className="question-card">
-        {question.imageUrl && (
-          <a class="tile" href="#" tabIndex="0">
-            <img src={question.imageUrl} alt="Question" className="question-image" />
-          </a>
-        )}
-        
-        <h2>{question.text}</h2>
-
-        <div className="options-grid">
-          {question.options.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswer(option)}
-              className={`option-btn ${
-                selectedAnswer === option 
-                  ? (isCorrect ? 'correct' : 'wrong') 
-                  : ''
-              }`}
-              disabled={selectedAnswer !== null}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-
-        {selectedAnswer && (
-          <div className="feedback">
-            <p>{isCorrect ? "Excellent !" : `Dommage ! La réponse était : ${question.correctAnswer}`}</p>
-            <button onClick={fetchRandomQuestion} className="next-btn">Question Suivante</button>
+          <div className="options-grid">
+            {questions[currentIndex].options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswer(option)}
+                className={`option-btn ${
+                  selectedAnswer === option 
+                    ? (handleAnswer ? 'correct' : 'wrong') 
+                    : ''
+                }`}
+                disabled={selectedAnswer !== null}
+              >
+                {option}
+              </button>
+            ))}
           </div>
-        )}
+
+          {selectedAnswer && (
+            <div className="feedback">
+              <p>{handleAnswer ? "Excellent !" : `Dommage ! La réponse était : ${questions[currentIndex].correctAnswer}`}</p>
+              <button onClick={nextQuestion} className="next-btn">Question Suivante</button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    )
+  };
 }
 
 export default App;
