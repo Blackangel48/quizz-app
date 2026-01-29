@@ -9,14 +9,34 @@ app.use(express.json());
 // Connexion à MongoDB (l'hôte est 'db' car défini dans docker-compose)
 mongoose.connect('mongodb://db:27017/quizdb');
 
-const QuestionSchema = new mongoose.Schema({
-  text: String,
-  imageUrl: String,
+
+// 1. Modèle Catégorie (Séparé car réutilisable)
+const categorySchema = new mongoose.Schema({
+  nom: { type: String, required: true, unique: true }
+});
+const Category = mongoose.model('Category', categorySchema);
+
+// 2. Schéma Stats (Sous-document car lié 1-à-1 à la question)
+const statsSchema = new mongoose.Schema({
+  askedNb: { type: Number, default: 0 },
+  correctNb: { type: Number, default: 0 },
+  correctRate: { type: Number, default: 0 }
+});
+
+// 3. Modèle Question principal
+const questionSchema = new mongoose.Schema({
+  text: { type: String, required: true },
+  urlImage: String,
   options: [String],
-  correctAnswer: String
+  correctAnswer: String,
+  // Tableau de référence vers l'ID d'une catégorie
+  category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+  // Intégration directe des stats
+  stats: { type: statsSchema, default: () => ({}) }
 });
 
 const Question = mongoose.model('Question', QuestionSchema);
+
 
 // Route pour récupérer une question aléatoire
 app.get('/api/questions/random', async (req, res) => {
