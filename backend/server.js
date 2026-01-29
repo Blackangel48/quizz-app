@@ -24,13 +24,13 @@ const statsSchema = new mongoose.Schema({
 });
 
 // 3. Modèle Question principal
-const questionSchema = new mongoose.Schema({
+const QuestionSchema = new mongoose.Schema({
   text: { type: String, required: true },
   urlImage: String,
   options: [String],
   correctAnswer: String,
   // Tableau de référence vers l'ID d'une catégorie
-  category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
   // Intégration directe des stats
   stats: { type: statsSchema, default: () => ({}) }
 });
@@ -71,7 +71,7 @@ app.get('/api/questions/:id', async (req, res) => {
 // Route de récupération de la liste des questions
 app.get('/api/questions', async (req, res) => {
   try {
-    const questions = await Question.find();
+    const questions = await Question.find().populate('categories');
     res.json(questions);
   } catch (err) {
     res.status(500).json({ error: "Erreur serveur" });
