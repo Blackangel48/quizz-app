@@ -105,6 +105,202 @@ const seedData = [
     options: ["Kosovo", "Kiribati", "Kirghizistan", "Koweït"],
     correctAnswer: "Kosovo",
     categoryNames: ["Geographie","Drapeaux"]
+  },
+  {
+    text: "Quel est ce monument situé à Athènes ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/800px-The_Parthenon_in_Athens.jpg",
+    options: ["Le Colisée", "Le Parthénon", "L'Alhambra", "L'Acropole de Rhodes"],
+    correctAnswer: "Le Parthénon",
+    categoryNames: ["Geographie", "Monument", "Histoire"]
+  },
+  {
+    text: "Quel est le nom de ce tableau célèbre ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/757px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+    options: ["Le Cri", "La Nuit étoilée", "Impression, soleil levant", "Guernica"],
+    correctAnswer: "La Nuit étoilée",
+    categoryNames: ["Art", "Peinture"]
+  },
+  {
+    text: "Quel pays possède ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/512px-Flag_of_Switzerland.svg.png",
+    options: ["Autriche", "Malte", "Suisse", "Danemark"],
+    correctAnswer: "Suisse",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "De quel film d'animation provient ce personnage ?",
+    imageUrl: "https://ghiblishop.fr/wp-content/uploads/2021/10/219_webedia-articles_8c6_a76_0d9872338f047ec9f5072cdf36_1513702-l-univers-d-harry-potter-a-son-magicobus-orig-1-1.jpeg",
+    options: ["Le Voyage de Chihiro", "Mon Voisin Totoro", "Ponyo sur la falaise", "Princesse Mononoké"],
+    correctAnswer: "Mon Voisin Totoro",
+    categoryNames: ["Cinema", "Animation"]
+  },
+  {
+    text: "Quelle est la capitale du Japon ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/800px-Skyscrapers_of_Shinjuku_2009_January.jpg",
+    options: ["Osaka", "Kyoto", "Séoul", "Tokyo"],
+    correctAnswer: "Tokyo",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quel est ce langage de programmation ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/960px-Python-logo-notext.svg.png",
+    options: ["Ruby", "Python", "Swift", "PHP"],
+    correctAnswer: "Python",
+    categoryNames: ["Informatique"]
+  },
+  {
+    text: "Quel est ce mammifère marin ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Killerwhales_jumping.jpg/800px-Killerwhales_jumping.jpg",
+    options: ["Requin", "Dauphin", "Orque", "Baleine bleue"],
+    correctAnswer: "Orque",
+    categoryNames: ["Animaux", "Nature"]
+  },
+  {
+    text: "Qui a sculpté cette œuvre ?",
+    imageUrl: "https://www.musee-rodin.fr//sites/default/files/2021-04/jm_5550.jpg",
+    options: ["Michel-Ange", "Rodin", "Bernini", "Donatello"],
+    correctAnswer: "Rodin",
+    categoryNames: ["Art", "Histoire"]
+  },
+  {
+    text: "Quelle est la monnaie utilisée dans ce pays ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png",
+    options: ["Livre Sterling", "Euro", "Yen", "Dollar"],
+    correctAnswer: "Dollar",
+    categoryNames: ["Geographie", "Economie"]
+  },
+  {
+    text: "Quel est cet instrument à cordes frappées ?",
+    imageUrl: "https://drop.philharmoniedeparis.fr/CMFM/CMFM000000200/158208-_CMIM000023622_LD.jpg",
+    options: ["Harpe", "Clavecin", "Piano", "Guitare"],
+    correctAnswer: "Clavecin",
+    categoryNames: ["Instrument", "Musique"]
+  },
+  {
+    text: "Quel célèbre physicien est représenté ici ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/374px-Albert_Einstein_Head.jpg",
+    options: ["Isaac Newton", "Nikola Tesla", "Albert Einstein", "Marie Curie"],
+    correctAnswer: "Albert Einstein",
+    categoryNames: ["Histoire", "Science"]
+  },
+  {
+    text: "Quel pays est connu pour cette pyramide ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg",
+    options: ["Mexique", "Égypte", "Pérou", "Soudan"],
+    correctAnswer: "Égypte",
+    categoryNames: ["Geographie", "Monument", "Histoire"]
+  },
+  {
+    text: "Quel est ce composant informatique ?",
+    imageUrl: "https://m.media-amazon.com/images/I/614y6FroB-L._AC_UF1000,1000_QL80_.jpg",
+    options: ["Disque dur", "Mémoire vive", "Processeur", "Carte graphique"],
+    correctAnswer: "Disque dur",
+    categoryNames: ["Informatique"]
+  },
+  {
+    text: "Quelle est la capitale de l'Australie ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Parliament_House_Canberra_Night.jpg/800px-Parliament_House_Canberra_Night.jpg",
+    options: ["Sydney", "Melbourne", "Canberra", "Perth"],
+    correctAnswer: "Canberra",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale du Canada ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Ottawa_-_ON_-_Parliament_Hill.jpg/800px-Ottawa_-_ON_-_Parliament_Hill.jpg",
+    options: ["Toronto", "Montréal", "Vancouver", "Ottawa"],
+    correctAnswer: "Ottawa",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Corée du Sud ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Lotte_World_Tower_and_Seoul_skyline.jpg/800px-Lotte_World_Tower_and_Seoul_skyline.jpg",
+    options: ["Busan", "Pyongyang", "Séoul", "Incheon"],
+    correctAnswer: "Séoul",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale du Brésil ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Congresso_Nacional_do_Brasil_2014.jpg/800px-Congresso_Nacional_do_Brasil_2014.jpg",
+    options: ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"],
+    correctAnswer: "Brasília",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale du Portugal ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Lisbon_as_seen_from_the_Tagus_river.jpg/800px-Lisbon_as_seen_from_the_Tagus_river.jpg",
+    options: ["Porto", "Lisbonne", "Faro", "Coimbra"],
+    correctAnswer: "Lisbonne",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de l'Islande ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Reykjavik_Skyline.jpg/800px-Reykjavik_Skyline.jpg",
+    options: ["Reykjavik", "Oslo", "Helsinki", "Bergen"],
+    correctAnswer: "Reykjavik",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de l'Argentine ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Buenos_Aires_-_Obelisco.jpg/800px-Buenos_Aires_-_Obelisco.jpg",
+    options: ["Santiago", "Montevideo", "Buenos Aires", "Lima"],
+    correctAnswer: "Buenos Aires",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Grèce ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Athens_Acropolis.jpg/800px-Athens_Acropolis.jpg",
+    options: ["Sparte", "Héraklion", "Athènes", "Thessalonique"],
+    correctAnswer: "Athènes",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale du Vietnam ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Temple_of_Literature_Hanoi_01.jpg/800px-Temple_of_Literature_Hanoi_01.jpg",
+    options: ["Ho Chi Minh Ville", "Hanoï", "Huế", "Da Nang"],
+    correctAnswer: "Hanoï",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de l'Égypte ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Cairo_Tower_at_Night.jpg/800px-Cairo_Tower_at_Night.jpg",
+    options: ["Alexandrie", "Louxor", "Le Caire", "Gizeh"],
+    correctAnswer: "Le Caire",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Thaïlande ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Wat_Arun_Bangkok_Thailand.jpg/800px-Wat_Arun_Bangkok_Thailand.jpg",
+    options: ["Phuket", "Chiang Mai", "Bangkok", "Pattaya"],
+    correctAnswer: "Bangkok",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de l'Afrique du Sud ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Cape_Town_Waterfront.jpg/800px-Cape_Town_Waterfront.jpg",
+    options: ["Johannesburg", "Le Cap", "Durban", "Pretoria"],
+    correctAnswer: "Pretoria",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Pologne ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Warszawa_Centrum.jpg/800px-Warszawa_Centrum.jpg",
+    options: ["Cracovie", "Gdańsk", "Varsovie", "Wrocław"],
+    correctAnswer: "Varsovie",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Nouvelle-Zélande ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Wellington_Harbour_Night.jpg/800px-Wellington_Harbour_Night.jpg",
+    options: ["Auckland", "Christchurch", "Wellington", "Queenstown"],
+    correctAnswer: "Wellington",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quelle est la capitale de la Turquie ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ankara_at_night.jpg/800px-Ankara_at_night.jpg",
+    options: ["Istanbul", "Antalya", "Ankara", "Izmir"],
+    correctAnswer: "Ankara",
+    categoryNames: ["Geographie", "Capitale"]
   }
 ];
 
@@ -130,7 +326,7 @@ async function seed() {
         if (!categoryDoc) {
           categoryDoc = await Category.create({ nom: catName });
         }
-        
+
         categoryIds.push(categoryDoc._id);
       }
 

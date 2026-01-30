@@ -3,6 +3,9 @@ import './App.css';
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Toutes");
+  const [quizStarted, setQuizStarted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
@@ -13,8 +16,19 @@ function App() {
   const fetchAllQuestions = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/questions');
-      const data = await response.json();
+      let data = await response.json();
       setQuestions(data);
+    } catch (error) {
+      console.error("Erreur lors de la récupération :", error);
+    }
+  };
+
+    // On charge toutes les categorie
+  const fetchAllCategories = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/categories');
+      let data = await response.json();
+      setAllCategories(data);
     } catch (error) {
       console.error("Erreur lors de la récupération :", error);
     }
@@ -22,36 +36,79 @@ function App() {
 
   useEffect(() => {
     fetchAllQuestions();
+    fetchAllCategories();
   }, []);
 
+// --- LOGIQUE DE FILTRAGE ---
+  const filteredQuestions = selectedCategory === "Toutes" 
+    ? questions 
+    : questions.filter(q => q.categories.some(cat => cat.nom === selectedCategory));
+
+  const startQuiz = () => {
+    if (filteredQuestions.length > 0) {
+      setQuizStarted(true);
+    } else {
+      alert("Aucune question dans cette catégorie !");
+    }
+  };
+
+// --- QUELQUES CONSTANTES
+  const currentQuestion = filteredQuestions[currentIndex];
+  const totalQuestions = filteredQuestions.length;
+  const isCorrect = ( selectedAnswer === currentQuestion?.correctAnswer );
+
+// --- LOGIQUE DE REPONSE ---
   const handleAnswer = (option) => {
     if (selectedAnswer) return; // Empêche de répondre plusieurs fois
     setSelectedAnswer(option);
 
     setUserAnswers([...userAnswers, option]);
     
-    if (option === questions[currentIndex].correctAnswer) {
+    if (option === currentQuestion.correctAnswer) {
       setScore(score + 1);
     }
   };
 
   const nextQuestion = () => {
     setSelectedAnswer(null);
-    if (currentIndex + 1 < questions.length) {
+    if (currentIndex + 1 < filteredQuestions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
       setShowResults(true); // On affiche la fin du quiz
     }
   };
 
-  const currentQuestion = questions[currentIndex];
-  const totalQuestions = questions.length;
-  const isCorrect = ( selectedAnswer === currentQuestion?.correctAnswer );
-
 //  if (loading) return <div className="loader">Chargement du quiz...</div>;
 //  if (!question) return <div>Aucune question trouvée. Lancez le script seed !</div>;
+
+// --- Écran de sélection (Accueil)
+  if (!quizStarted) {
+    return (
+      <div className="setup-container">
+        <h1>Choisir un thème</h1>
+        <select 
+          value={selectedCategory} 
+          onChange={(e) => setSelectedCategory(e.target.value)} 
+          className="category-select"
+        >
+          <option value="Toutes">Toutes les catégories</option>
+          {[...allCategories].sort((a,b) => a.nom.localeCompare(b.nom))
+          .map(cat => (
+            <option key={cat._id} value={cat.nom}>{cat.nom}</option>
+          ))}
+        </select>
+        
+        <p>{filteredQuestions.length} questions disponibles</p>
+        
+        <button onClick={startQuiz} className="start-btn">Lancer le Quiz</button>
+      </div>
+    );
+  }
+
+// --- Ecran de chargement
   if (totalQuestions === 0) return <div className="loader">Chargement du quiz...</div>;
 
+// --- Ecran de résultat
   if (showResults === true) {
     return (
       <div className='quiz-result'>
@@ -60,7 +117,7 @@ function App() {
         <h2>{score} / {totalQuestions}</h2>
 
         <div className='quiz-recap'>
-          {questions.map((questionData, index) => {
+          {filteredQuestions.map((questionData, index) => {
             const userChoice = userAnswers[index];
             const isUserCorrect = userChoice === questionData.correctAnswer;
 
@@ -88,6 +145,7 @@ function App() {
       </div>
     )
   }
+// --- Ecran de jeu
   else {
     return (
       <div className="quiz-container">

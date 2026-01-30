@@ -126,3 +126,39 @@
 .text-success { color: #2e7d32; font-weight: bold; }
 .text-danger { color: #c62828; font-weight: bold; }
 .text-actual { color: #555; font-size: 0.9rem; }
+
+
+.setup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 50px;
+}
+
+.category-select {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 2px solid #2196f3;
+  background: white;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+
+.start-btn {
+  padding: 15px 40px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+}
+
