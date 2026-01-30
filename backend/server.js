@@ -51,6 +51,39 @@ app.get('/api/questions/random', async (req, res) => {
 });
 
 
+// Route de récupération de la liste des questions
+app.get('/api/questions', async (req, res) => {
+  try {
+    const { category } = req.query; // Récupère ?category=Nom depuis l'URL
+    let query = {};
+
+    if (category && category !== "Toutes") {
+      // On cherche l'ID de la catégorie correspondant au nom
+      const categoryDoc = await Category.findOne({ nom: category });
+      if (categoryDoc) {
+        // On cherche les questions qui contiennent cet ID dans leur tableau 'categories'
+        query = { categories: categoryDoc._id };
+      }
+    }
+
+    const questions = await Question.find(query).populate('categories');
+    res.json(questions);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur lors du filtrage" });
+  }
+});
+
+// Route de récupération de la liste des categorie
+app.get('/api/categories', async (req, res) => {
+  try {
+    const categories = await Category.find();
+    res.json(categories);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
+
 // Route pour récupérer la question demandée
 app.get('/api/questions/:id', async (req, res) => {
   try {
@@ -65,16 +98,6 @@ app.get('/api/questions/:id', async (req, res) => {
   } catch (err) {
     // Si l'ID envoyé n'est pas au format MongoDB (CastError)
     res.status(400).json({ error: "ID invalide ou erreur serveur" });
-  }
-});
-
-// Route de récupération de la liste des questions
-app.get('/api/questions', async (req, res) => {
-  try {
-    const questions = await Question.find().populate('categories');
-    res.json(questions);
-  } catch (err) {
-    res.status(500).json({ error: "Erreur serveur" });
   }
 });
 
