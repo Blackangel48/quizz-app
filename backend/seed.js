@@ -27,7 +27,7 @@ const seedData = [
     imageUrl: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=500",
     options: ["Tour Eiffel", "Empire State Building", "Burj Khalifa", "Tour de Pise"],
     correctAnswer: "Tour Eiffel",
-    categoryNames: ["Monument"]
+    categoryNames: ["Monument","Geographie","Histoire"]
   },
   {
     text: "Quel langage est représenté par ce logo ?",
@@ -41,7 +41,7 @@ const seedData = [
     imageUrl: "https://www.pokepedia.fr/images/f/f9/Wailmer-RS.png",
     options: ["Oyacata", "Wailmer", "Laggron", "Wailord"],
     correctAnswer: "Wailmer",
-    categoryNames: ["Pokemon"]
+    categoryNames: ["Pokemon","Jeux-videos"]
   },
   {
     text: "Quel pays est représenté sur cette carte ?",
@@ -55,7 +55,7 @@ const seedData = [
     imageUrl: "https://masalchi.fr/images/epice-bio/138/1613470378/big/combava-bio-epice-bio.jpg",
     options: ["Citron vert", "Combava", "Kaki", "Cédratier"],
     correctAnswer: "Combava",
-    categoryNames: ["Fruits"]
+    categoryNames: ["Fruits","Nature"]
   },
   {
     text: "Quel est la capitale du Danemark ?",
@@ -69,28 +69,28 @@ const seedData = [
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg",
     options: ["Beethoven", "Mozart", "Vivaldi", "Chopin"],
     correctAnswer: "Beethoven",
-    categoryNames: ["Histoire"]
+    categoryNames: ["Histoire","Musique"]
   },
   {
     text: "Quel est cet instrument ?",
     imageUrl: "https://conservatoire.toulouse.fr/wp-content/uploads/sites/10/2023/11/Violoncelle.jpg",
     options: ["Violon", "Violoncelle", "Alto", "Contrebasse"],
     correctAnswer: "Violoncelle",
-    categoryNames: ["Instrument"]
+    categoryNames: ["Instrument","Musique","Art"]
   },
   {
     text: "Qui a peint cette oeuvre ?",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg",
     options: ["Delacroix", "Friedrich", "Runge", "Cole"],
     correctAnswer: "Friedrich",
-    categoryNames: ["Art"]
+    categoryNames: ["Art","Peinture"]
   },
   {
     text: "Combien d'heure dorment les koalas par jour ?",
     imageUrl: "https://cdn.pixabay.com/photo/2011/09/28/23/19/koala-9960_960_720.jpg",
     options: ["Entre 14h et 16h", "Entre 16h et 18h", "Entre 18h et 20h", "Entre 20h et 22h"],
     correctAnswer: "Entre 18h et 20h",
-    categoryNames: ["Animaux"]
+    categoryNames: ["Animaux","Nature"]
   },
   {
     text: "Quelle est l'année de sortie de Minecraft ?",
@@ -174,7 +174,7 @@ const seedData = [
     imageUrl: "https://drop.philharmoniedeparis.fr/CMFM/CMFM000000200/158208-_CMIM000023622_LD.jpg",
     options: ["Harpe", "Clavecin", "Piano", "Guitare"],
     correctAnswer: "Clavecin",
-    categoryNames: ["Instrument", "Musique"]
+    categoryNames: ["Instrument", "Musique", "Art"]
   },
   {
     text: "Quel célèbre physicien est représenté ici ?",
@@ -301,6 +301,216 @@ const seedData = [
     options: ["Istanbul", "Antalya", "Ankara", "Izmir"],
     correctAnswer: "Ankara",
     categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "À quel pays appartient ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/900px-Flag_of_South_Korea.svg.png",
+    options: ["Japon", "Corée du Sud", "Thaïlande", "Chine"],
+    correctAnswer: "Corée du Sud",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays est représenté par ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/960px-Flag_of_Australia_%28converted%29.svg.png?20250528082742",
+    options: ["Royaume-Uni", "Nouvelle-Zélande", "Australie", "Fidji"],
+    correctAnswer: "Australie",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Reconnaissez-vous le drapeau de ce pays d'Amérique du Sud ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/1000px-Flag_of_Uruguay.svg.png",
+    options: ["Argentine", "Grèce", "Uruguay", "Salvador"],
+    correctAnswer: "Uruguay",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays possède ce drapeau avec une feuille d'érable ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/1000px-Flag_of_Canada_%28Pantone%29.svg.png",
+    options: ["États-Unis", "Canada", "Liban", "Pérou"],
+    correctAnswer: "Canada",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "À quel pays appartient ce drapeau bicolore ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/960px-Flag_of_Ukraine.svg.png?20230624202942",
+    options: ["Suède", "Pologne", "Ukraine", "Kazakhstan"],
+    correctAnswer: "Ukraine",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel est ce pays dont le drapeau contient un cèdre ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Lebanon.svg/900px-Flag_of_Lebanon.svg.png",
+    options: ["Liban", "Chypre", "Syrie", "Jordanie"],
+    correctAnswer: "Liban",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays d'Afrique possède ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/900px-Flag_of_South_Africa.svg.png",
+    options: ["Kenya", "Sénégal", "Nigeria", "Afrique du Sud"],
+    correctAnswer: "Afrique du Sud",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Saurez-vous identifier ce drapeau européen ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1000px-Flag_of_Germany.svg.png",
+    options: ["Belgique", "Allemagne", "Autriche", "Pays-Bas"],
+    correctAnswer: "Allemagne",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "À quel pays appartient ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/1000px-Flag_of_Bangladesh.svg.png",
+    options: ["Japon", "Palau", "Bangladesh", "Laos"],
+    correctAnswer: "Bangladesh",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays nordique possède ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Finland.svg/960px-Flag_of_Finland.svg.png?20230220191416",
+    options: ["Suède", "Norvège", "Islande", "Finlande"],
+    correctAnswer: "Finlande",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays d'Amérique Centrale utilise ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Flag_of_Cuba.svg/960px-Flag_of_Cuba.svg.png?20231030040603",
+    options: ["Porto Rico", "Cuba", "République Dominicaine", "Chili"],
+    correctAnswer: "Cuba",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Reconnaissez-vous le drapeau de ce pays asiatique ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Singapore.svg/900px-Flag_of_Singapore.svg.png",
+    options: ["Malaisie", "Indonésie", "Singapour", "Turquie"],
+    correctAnswer: "Singapour",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "À quel pays appartient ce drapeau tricolore ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/900px-Flag_of_the_Netherlands.svg.png",
+    options: ["Luxembourg", "France", "Pays-Bas", "Russie"],
+    correctAnswer: "Pays-Bas",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays possède ce drapeau ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/900px-Flag_of_Tunisia.svg.png",
+    options: ["Maroc", "Algérie", "Tunisie", "Libye"],
+    correctAnswer: "Tunisie",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+  {
+    text: "Quel pays possède ce drapeau unique ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/960px-Flag_of_Brazil.svg.png?20240809055211",
+    options: ["Portugal", "Mexique", "Brésil", "Colombie"],
+    correctAnswer: "Brésil",
+    categoryNames: ["Geographie", "Drapeaux"]
+  },
+{
+    text: "Quel est ce monument emblématique de l'Empire Khmer ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Angkor_Wat_Morning_View_2024.jpg/800px-Angkor_Wat_Morning_View_2024.jpg",
+    options: ["Borobudur", "Angkor Wat", "Bagan", "Louxor"],
+    correctAnswer: "Angkor Wat",
+    categoryNames: ["Monument", "Histoire", "Geographie"]
+  },
+  {
+    text: "Quel est le nom de ce fruit tropical à l'odeur très forte ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Durian.JPG/800px-Durian.JPG",
+    options: ["Jackfruit", "Mangoustan", "Durian", "Ramboutan"],
+    correctAnswer: "Durian",
+    categoryNames: ["Fruits", "Nature"]
+  },
+  {
+    text: "Qui est le créateur du World Wide Web (WWW) ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/440px-Sir_Tim_Berners-Lee_%28cropped%29.jpg",
+    options: ["Bill Gates", "Tim Berners-Lee", "Steve Jobs", "Alan Turing"],
+    correctAnswer: "Tim Berners-Lee",
+    categoryNames: ["Informatique", "Histoire"]
+  },
+  {
+    text: "De quelle peinture célèbre ce détail est-il extrait ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28crop%29.jpg/800px-Michelangelo_-_Creation_of_Adam_%28crop%29.jpg",
+    options: ["La Cène", "L'École d'Athènes", "La Création d'Adam", "Le Jugement Dernier"],
+    correctAnswer: "La Création d'Adam",
+    categoryNames: ["Art", "Peinture", "Histoire"]
+  },
+  {
+    text: "Quel est ce Pokémon de type Spectre/Poison ?",
+    imageUrl: "https://www.pokepedia.fr/images/e/e0/Ectoplasma-RFVF.png",
+    options: ["Spectrum", "Ectoplasma", "Fantominus", "Ténéfix"],
+    correctAnswer: "Ectoplasma",
+    categoryNames: ["Pokemon"]
+  },
+  {
+    text: "Dans quel pays se trouve ce monument naturel appelé 'Le Pain de Sucre' ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Sugarloaf_Mountain_and_Botafogo_Bay.jpg/800px-Sugarloaf_Mountain_and_Botafogo_Bay.jpg",
+    options: ["Colombie", "Brésil", "Portugal", "Mexique"],
+    correctAnswer: "Brésil",
+    categoryNames: ["Geographie", "Pays", "Nature"]
+  },
+  {
+    text: "Quel est cet instrument traditionnel de la famille des bois ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Bassoon_front_view.png/300px-Bassoon_front_view.png",
+    options: ["Hautbois", "Basson", "Clarinette", "Flûte de Pan"],
+    correctAnswer: "Basson",
+    categoryNames: ["Musique", "Instrument"]
+  },
+  {
+    text: "De quel film d'animation est tiré ce château ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/fr/5/5b/Le_Ch%C3%A2teau_ambulant.jpg",
+    options: ["Le Château dans le ciel", "Le Château ambulant", "Princesse Mononoké", "Kiki la petite sorcière"],
+    correctAnswer: "Le Château ambulant",
+    categoryNames: ["Cinema", "Animation"]
+  },
+  {
+    text: "Quelle est la capitale de l'Iran ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Azadi_Tower_at_night_2.jpg/800px-Azadi_Tower_at_night_2.jpg",
+    options: ["Bagdad", "Damas", "Téhéran", "Riyad"],
+    correctAnswer: "Téhéran",
+    categoryNames: ["Geographie", "Capitale"]
+  },
+  {
+    text: "Quel pays possède ce drapeau comportant un dragon ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/1000px-Flag_of_Bhutan.svg.png",
+    options: ["Népal", "Bhoutan", "Pays de Galles", "Vietnam"],
+    correctAnswer: "Bhoutan",
+    categoryNames: ["Geographie", "Drapeaux", "Pays"]
+  },
+  {
+    text: "Quel est ce mammifère connu pour être le plus lent au monde ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bradypus.jpg/800px-Bradypus.jpg",
+    options: ["Koala", "Paresseux", "Loris lent", "Tortue"],
+    correctAnswer: "Paresseux",
+    categoryNames: ["Animaux", "Nature"]
+  },
+  {
+    text: "Dans quel jeu vidéo explore-t-on la région de Hyrule ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/fr/b/bd/The_Legend_of_Zelda_Logo.png",
+    options: ["Final Fantasy", "The Legend of Zelda", "Genshin Impact", "Skyrim"],
+    correctAnswer: "The Legend of Zelda",
+    categoryNames: ["Jeux-videos"]
+  },
+  {
+    text: "Qui a formulé la théorie de la relativité générale ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/374px-Albert_Einstein_Head.jpg",
+    options: ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Niels Bohr"],
+    correctAnswer: "Albert Einstein",
+    categoryNames: ["Science", "Histoire"]
+  },
+  {
+    text: "Quelle monnaie est gérée par la Banque Centrale Européenne (BCE) ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Euro_symbol_black.svg/512px-Euro_symbol_black.svg.png",
+    options: ["Franc Suisse", "Livre Sterling", "Euro", "Yen"],
+    correctAnswer: "Euro",
+    categoryNames: ["Economie"]
+  },
+  {
+    text: "Quel type de mémoire informatique est représenté par cette barrette ?",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Kingston_DDR3_RAM.jpg/800px-Kingston_DDR3_RAM.jpg",
+    options: ["Disque Dur", "RAM", "ROM", "Cache"],
+    correctAnswer: "RAM",
+    categoryNames: ["Informatique"]
   }
 ];
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, use } from 'react';
 import './App.css';
+import { shuffleArray } from './utils.js';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -23,7 +24,7 @@ function App() {
     }
   };
 
-    // On charge toutes les categorie
+    // On charge toutes les categories
   const fetchAllCategories = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/categories');
@@ -35,26 +36,62 @@ function App() {
   };
 
   useEffect(() => {
-    fetchAllQuestions();
     fetchAllCategories();
   }, []);
 
-// --- LOGIQUE DE FILTRAGE ---
-  const filteredQuestions = selectedCategory === "Toutes" 
-    ? questions 
-    : questions.filter(q => q.categories.some(cat => cat.nom === selectedCategory));
+// --- LOGIQUE D'ENVOI DE STATS ---
+const sendFinalResults = async (questions, userAnswers) => {
+  // On prépare un tableau d'objets contenant l'ID et si c'est correct
+  const results = questions.map((q, index) => ({
+    id: q._id,
+    isCorrect: userAnswers[index] === q.correctAnswer
+  }));
 
-  const startQuiz = () => {
-    if (filteredQuestions.length > 0) {
-      setQuizStarted(true);
-    } else {
-      alert("Aucune question dans cette catégorie !");
+  try {
+    const response = await fetch('http://localhost:5000/api/questions/stats-bulk', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ results })
+    });
+
+    if (response.ok) {
+      console.log("Statistiques mises à jour avec succès !");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'envoi des stats:", error);
+  }
+};
+
+// --- LOGIQUE DE RECUPERATION DES QUESTIONS DE LA CATEGORIE ---
+  const startQuiz = async () => {
+    try {
+      const url = `http://localhost:5000/api/questions?category=${selectedCategory}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.length > 0) {
+        const randomizedQuestions = shuffleArray(data).map(q => ({
+          ...q,
+          options: shuffleArray(q.options)
+        }));
+        
+        setQuestions(randomizedQuestions);
+        setQuizStarted(true);
+        setCurrentIndex(0);
+        setScore(0);
+        setUserAnswers([]);
+        setShowResults(false)
+      } else {
+        alert("Aucune question trouvée pour ce thème.");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
     }
   };
 
 // --- QUELQUES CONSTANTES
-  const currentQuestion = filteredQuestions[currentIndex];
-  const totalQuestions = filteredQuestions.length;
+  const currentQuestion = questions[currentIndex];
+  const totalQuestions = questions.length;
   const isCorrect = ( selectedAnswer === currentQuestion?.correctAnswer );
 
 // --- LOGIQUE DE REPONSE ---
@@ -71,10 +108,11 @@ function App() {
 
   const nextQuestion = () => {
     setSelectedAnswer(null);
-    if (currentIndex + 1 < filteredQuestions.length) {
+    if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
       setShowResults(true); // On affiche la fin du quiz
+      sendFinalResults(questions, userAnswers);
     }
   };
 
@@ -98,7 +136,7 @@ function App() {
           ))}
         </select>
         
-        <p>{filteredQuestions.length} questions disponibles</p>
+        <p>Prêt pour un nouveau défi ?</p>
         
         <button onClick={startQuiz} className="start-btn">Lancer le Quiz</button>
       </div>
@@ -116,14 +154,28 @@ function App() {
 
         <h2>{score} / {totalQuestions}</h2>
 
+        <button 
+          onClick={() => {
+            setQuizStarted(false);
+            setShowResults(false);
+            setQuestions([]); // On vide pour forcer le rechargement au prochain start
+          }} 
+          className="restart-btn"
+        >
+          Retour au menu
+        </button>
+
         <div className='quiz-recap'>
-          {filteredQuestions.map((questionData, index) => {
+          {questions.map((questionData, index) => {
             const userChoice = userAnswers[index];
             const isUserCorrect = userChoice === questionData.correctAnswer;
 
             return (
               <div key={index} className={`question-recap ${isUserCorrect ? 'recap-correct' : 'recap-wrong'}`}>
                 <div className="recap-header">
+
+                  
+  
                   <img src={questionData.imageUrl} alt="Question" className="recap-image" />
                   <p><strong>Question {index + 1}:</strong> {questionData.text}</p>
                 </div>
@@ -138,10 +190,23 @@ function App() {
                     </p>
                   )}
                 </div>
+                <div key={index}>
+                  <span>Taux de réussite global : {(questionData.stats.correctRate * 100).toFixed(0)}%</span>
+                </div>
               </div>
             );
           })}
         </div>
+        <button 
+          onClick={() => {
+            setQuizStarted(false);
+            setShowResults(false);
+            setQuestions([]); // On vide pour forcer le rechargement au prochain start
+          }} 
+          className="restart-btn"
+        >
+          Retour au menu
+        </button>
       </div>
     )
   }

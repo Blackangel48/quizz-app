@@ -83,6 +83,30 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
+app.patch('/api/questions/stats-bulk', async (req, res) => {
+  try {
+    const { results } = req.body; // [{id: "...", isCorrect: true}, ...]
+
+    const updatePromises = results.map(async (item) => {
+      const question = await Question.findById(item.id);
+      if (question) {
+        question.stats.askedNb += 1;
+        if (item.isCorrect) {
+          question.stats.correctNb += 1;
+        }
+        // Recalcul du taux
+        question.stats.correctRate = question.stats.correctNb / question.stats.askedNb;
+        return question.save();
+      }
+    });
+
+    await Promise.all(updatePromises);
+    res.json({ message: "Toutes les stats sont à jour" });
+  } catch (err) {
+    res.status(500).json({ error: "Erreur lors de la mise à jour globale" });
+  }
+});
+
 
 // Route pour récupérer la question demandée
 app.get('/api/questions/:id', async (req, res) => {
@@ -101,5 +125,23 @@ app.get('/api/questions/:id', async (req, res) => {
   }
 });
 
+app.patch('/api/questions/:id/stats', async (req, res) => {
+  const { isCorrect } = req.body;
+  
+  const update = {
+    $inc: { 
+      "stats.askedNb": 1,
+      "stats.correctNb": isCorrect ? 1 : 0 
+    }
+  };
+
+  const question = await Question.findByIdAndUpdate(req.params.id, update, { new: true });
+  
+  // Recalcul du taux de réussite
+  question.stats.correctRate = question.stats.correctNb / question.stats.askedNb;
+  await question.save();
+
+  res.json(question);
+});
 
 app.listen(5000, () => console.log('Backend démarré sur le port 5000'));
