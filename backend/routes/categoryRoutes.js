@@ -3,4 +3,6 @@ const router = express.Router();
 const categoryCtrl = require('../controllers/categoryController');
 
 // Route de récupération de la liste des categorie
-router.get('/api/categories', categoryCtrl.getCategories);
+router.get('/', categoryCtrl.getCategories);
+
+module.exports = router;

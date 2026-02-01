@@ -18,4 +18,4 @@ const questionSchema = new mongoose.Schema({
   stats: { type: statsSchema, default: () => ({}) }
 });
 
-const Question = mongoose.model('Question', questionSchema);
+module.exports = mongoose.model('Question', questionSchema);

@@ -1,4 +1,3 @@
-const Question = require('../models/Question');
 const Category = require('../models/Category');
 
 exports.getCategories = async (req, res) => {
