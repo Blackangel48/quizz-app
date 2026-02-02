@@ -2,23 +2,8 @@ const mongoose = require('mongoose');
 
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://db:27017/quizdb';
 
-// --- Définition des Schémas ---
-const Category = mongoose.model('Category', new mongoose.Schema({
-    nom: { type: String, unique: true }
-}));
-
-const Question = mongoose.model('Question', new mongoose.Schema({
-    text: String,
-    imageUrl: String,
-    options: [String],
-    correctAnswer: String,
-    categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
-    stats: {
-        askedNb: { type: Number, default: 0 },
-        correctNb: { type: Number, default: 0 },
-        correctRate: { type: Number, default: 0 }
-    }
-}));
+const Question = require('../models/Question');
+const Category = require('../models/Category');
 
 // --- Définition des Données fixtures ---
 const seedData = [

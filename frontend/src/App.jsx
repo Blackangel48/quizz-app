@@ -62,7 +62,7 @@ const sendFinalResults = async (questions, userAnswers) => {
   }
 };
 
-// --- LOGIQUE DE RECUPERATION DES QUESTIONS DE LA CATEGORIE ---
+// --- LOGIQUE DE RECUPERATION DES QUESTIONS DE LA CATEGORIE ET RANDOM ---
   const startQuiz = async () => {
     try {
       const url = `http://localhost:5000/api/questions?category=${selectedCategory}`;
