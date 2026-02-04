@@ -478,7 +478,7 @@ const seedData = [
   },
   {
     text: "Qui a formulé la théorie de la relativité générale ?",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/374px-Albert_Einstein_Head.jpg",
+    imageUrl: "https://lh3.googleusercontent.com/proxy/bDFZW9fhcT0Bu4_V3djlhK7rhTB6skXhB_yBWj2-X-ZmfXJncK4cveVYKhy1OD2ziAyna0LeMwHoA93pmFJOIPtupp3MzsckrCMs9tM05CMsWhgNkag",
     options: ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Niels Bohr"],
     correctAnswer: "Albert Einstein",
     categoryNames: ["Science", "Histoire"]
