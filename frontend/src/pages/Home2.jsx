@@ -35,21 +35,13 @@ export default function Home({ setQuestions, selectedCategory, setSelectedCatego
 
     return (
         <div className="setup-container">
-            <h1>Choisir un thème</h1>
-            <select 
-                value={selectedCategory} 
-                onChange={(e) => setSelectedCategory(e.target.value)} 
-                className="category-select"
-            >
-            <option value="Toutes">Toutes les catégories</option>
+            <h1>Quiz Master</h1>
 
-            {[...categories].sort((a,b) => a.nom.localeCompare(b.nom))
-            .map(cat => (
-                <option key={cat._id} value={cat.nom}>{cat.nom}</option>
+            {categories.map((cat) => (
+                <div>
+                    cat.nom
+                </div>
             ))}
-            </select>
-            
-            <p>Prêt pour un nouveau défi ?</p>
             
             <button onClick={startQuiz} className="start-btn">Lancer le Quiz</button>
         </div>

@@ -37,6 +37,13 @@ function App() {
             score={score}
           /> }
         />
+        <Route path='/test' element={ 
+          <Home2 
+            setQuestions={setQuestions} 
+            selectedCategory={selectedCategory} 
+            setSelectedCategory={setSelectedCategory}
+          /> }
+        />
       </Routes>
     </div>
   );
