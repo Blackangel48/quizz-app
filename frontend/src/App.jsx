@@ -23,12 +23,18 @@ function App() {
         />
         <Route path='/quiz' element={ 
           <QuizGame 
-            onFinish={() => navigate('/results')}
+            questions={questions} 
+            score={score} 
+            setScore={setScore}
+            userAnswers={userAnswers} 
+            setUserAnswers={setUserAnswers}
           /> }
         />
         <Route path='/results' element={ 
           <QuizResults 
-            onRestart={() => navigate('/')}
+            questions={questions} 
+            userAnswers={userAnswers} 
+            score={score}
           /> }
         />
       </Routes>

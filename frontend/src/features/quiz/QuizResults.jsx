@@ -1,4 +1,19 @@
-export default function QuizResults({ questions, userAnswers, score, onRestart}) {
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+export default function QuizResults({ questions, userAnswers, score }) {
+    const navigate = useNavigate();
+      
+    useEffect(() => {
+    }, []);
+
+    const onRestart = (() => {
+      navigate('/');
+    });
+
+    // --- QUELQUES CONSTANTES
+    const totalQuestions = questions.length;
+  
     return (
       <div className='quiz-result'>
         <h1>Votre score</h1>
@@ -46,4 +61,4 @@ export default function QuizResults({ questions, userAnswers, score, onRestart})
         </button>
       </div>
     )
-}
+};
