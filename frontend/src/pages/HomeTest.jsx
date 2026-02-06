@@ -3,19 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import { fetchCategories, fetchQuestionsByCategory } from '../api/quizApi';
 import { shuffleArray } from '../utils';
 
-export default function Home2({ setQuestions, selectedCategory, setSelectedCategory }) {
+export default function HomeTest({ setQuestions, selectedCategory, setSelectedCategory }) {
     const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         fetchCategories()
-        .then((data) => setCategories(data))
-        .catch((err) => console.error("Erreur categories:", err));
+        .then((data) => {
+            setCategories(data);
+            setLoading(false);
+        })
+        .catch((err) => {
+            console.error("Erreur categories:", err)
+            setLoading(false);
+        });
     }, []);
 
-    const startQuiz = async () => {
+    const startQuiz = async (categoryToUse) => {
         try {
-            const data = await fetchQuestionsByCategory(selectedCategory);
+            const theme = categoryToUse || selectedCategory;
+            const data = await fetchQuestionsByCategory(theme);
             if (data.length > 0) {
                 const randomized = shuffleArray(data).map(q => ({
                 ...q,
@@ -31,19 +40,36 @@ export default function Home2({ setQuestions, selectedCategory, setSelectedCateg
         } catch (error) {
         console.error("Erreur start:", error);
         }
-    }
+    };
+
+    const clickCategory = async (category) => {
+            setSelectedCategory(category)
+            await startQuiz(category);
+    };
 
     return (
         <div className="setup-container">
             <h1>Quiz Master</h1>
 
-            {categories.map((cat) => (
-                <button onClick={setSelectedCategory(cat.nom)}>{cat.nom}</button> // /!\ Selectionne la derniere categorie du map
-            ))} 
-
-            
-            
-            <button onClick={startQuiz} className="start-btn">Lancer le Quiz</button>
+            <div className='category-grid'>
+                {loading ? (
+                    // On affiche 10 boutons "fantômes" pendant le chargement
+                    Array.from({ length: 10 }).map((_, index) => (
+                        <div key={index} className="skeleton skeleton-btn"></div>
+                    ))
+                ) : (
+                    // On affiche les vraies données
+                    categories.map((cat) => (
+                        <button 
+                            key={cat._id} 
+                            onClick={() => {clickCategory(cat.nom)}} 
+                            className='category-btn'
+                        >
+                            {cat.nom}
+                        </button>
+                    ))
+                )}
+            </div>
         </div>
     )
 }

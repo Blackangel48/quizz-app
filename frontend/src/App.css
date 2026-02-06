@@ -162,3 +162,39 @@
   transform: scale(1.05);
 }
 
+.category-grid{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.category-btn {
+  text-align: center;
+  padding: 50px 100px;
+  background-color: #eee;
+}
+
+.category-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* L'animation de balayage */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+/* Style spécifique pour tes boutons fantômes */
+.skeleton-btn {
+  height: 123px;
+  width: 297px;
+  border: none;
+}

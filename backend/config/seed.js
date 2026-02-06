@@ -508,6 +508,8 @@ async function seed() {
     await Category.deleteMany({}); // Nettoie la base Category
     await Question.deleteMany({}); // Nettoie la base Question
 
+    await Category.create({ nom: "Toutes"});
+
     // Utilisation de for...of pour gérer l'asynchrone (await) correctement
     for (const data of seedData) {
       const categoryIds = [];
