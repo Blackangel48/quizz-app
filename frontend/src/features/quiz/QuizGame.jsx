@@ -8,6 +8,8 @@ export default function QuizGame({ questions, score, setScore, userAnswers, setU
     const navigate = useNavigate();
     
     useEffect(() => {
+      setScore(0);
+      setUserAnswers([]);
     }, []);
 
     // --- QUELQUES CONSTANTES

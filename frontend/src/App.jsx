@@ -15,7 +15,7 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path='/' element={ 
+        <Route path='/test' element={ 
           <Home 
             setQuestions={setQuestions} 
             selectedCategory={selectedCategory} 
@@ -38,7 +38,7 @@ function App() {
             score={score}
           /> }
         />
-        <Route path='/test' element={ 
+        <Route path='/' element={ 
           <HomeTest 
             setQuestions={setQuestions} 
             selectedCategory={selectedCategory} 

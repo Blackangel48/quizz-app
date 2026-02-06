@@ -50,7 +50,7 @@ export default function QuizResults({ questions, userAnswers, score }) {
                   )}
                 </div>
                 <div key={index}>
-                  <span>Taux de réussite global : {(questionData.stats.correctRate * 100).toFixed(0)}%</span>
+                  <span>Taux de réussite global : {questionData.stats.askedNb === 0 ? "aucune-donnée" : (questionData.stats.correctRate * 100).toFixed(0) + "%"} ({questionData.stats.askedNb})</span>
                 </div>
               </div>
             );
