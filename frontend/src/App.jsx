@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
+import HomeTest from './pages/HomeTest'
 import QuizGame from './features/quiz/QuizGame';
 import QuizResults from './features/quiz/QuizResults';
 import './App.css';
@@ -38,7 +39,7 @@ function App() {
           /> }
         />
         <Route path='/test' element={ 
-          <Home2 
+          <HomeTest 
             setQuestions={setQuestions} 
             selectedCategory={selectedCategory} 
             setSelectedCategory={setSelectedCategory}
