@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchCategories, fetchQuestionsByCategory } from '../api/quizApi';
-import { shuffleArray } from '../utils';
+import { shuffleArray } from '../hooks/utils';
 
 export default function HomeTest({ setQuestions, selectedCategory, setSelectedCategory }) {
     const [categories, setCategories] = useState([]);
@@ -53,8 +53,8 @@ export default function HomeTest({ setQuestions, selectedCategory, setSelectedCa
 
             <div className='category-grid'>
                 {loading ? (
-                    // On affiche 10 boutons "fantômes" pendant le chargement
-                    Array.from({ length: 10 }).map((_, index) => (
+                    // On affiche 12 boutons "fantômes" pendant le chargement
+                    Array.from({ length: 12 }).map((_, index) => (
                         <div key={index} className="skeleton skeleton-btn"></div>
                     ))
                 ) : (

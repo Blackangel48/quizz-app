@@ -199,9 +199,20 @@
   border-radius: 8px;
 }
 
-/* Style spécifique pour tes boutons fantômes */
 .skeleton-btn {
   height: 123px;
   width: 297px;
   border: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 60px;
 }

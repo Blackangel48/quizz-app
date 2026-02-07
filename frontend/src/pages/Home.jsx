@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchCategories, fetchQuestionsByCategory } from '../api/quizApi';
-import { shuffleArray } from '../utils';
+import { shuffleArray } from '../hooks/utils';
 
 export default function Home({ setQuestions, selectedCategory, setSelectedCategory }) {
     const [categories, setCategories] = useState([]);
