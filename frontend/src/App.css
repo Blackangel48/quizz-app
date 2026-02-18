@@ -100,13 +100,13 @@
   height: 12px;
   background-color: #e0e0e0;
   border-radius: 10px;
-  overflow: hidden; /* Pour que la barre verte ne dépasse pas des arrondis */
+  overflow: hidden;
 }
 
 .progress-bar-fill {
   height: 100%;
   background-color: #90ee90;
-  transition: width 0.4s ease-out; /* Animation fluide lors du changement de question */
+  transition: width 0.4s ease-out;
   border-radius: 10px 0 0 10px;
 }
 

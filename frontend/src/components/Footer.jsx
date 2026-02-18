@@ -1,4 +1,4 @@
-import './Footer.css'; // On va créer ce fichier juste après
+import './Footer.css';
 
 export default function Footer() {
   return (

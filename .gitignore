@@ -18,7 +18,7 @@ yarn.lock
 
 # --- Docker ---
 .dockerignore
-# Si tu décides de stocker tes données MongoDB localement au lieu d'un volume nommé :
+# --- MongoDB (Potentiellement) ---
 /data/db
 
 # --- Vite / React ---

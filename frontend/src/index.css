@@ -31,7 +31,7 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Évite le scroll horizontal parasite */
+  overflow-x: hidden; /* Évite le scroll horizontal */
   display: flex;
   flex-direction: column;
   align-content: center;
